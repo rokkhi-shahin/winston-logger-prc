@@ -20,6 +20,8 @@ const productionLogger = () => {
             // - Write all logs with importance level of `info` or less to `combined.log`
             //
             new transports.File({ filename: 'server.log' }),
+            new transports.MongoDB(options)
+
             // new transports.Console(),
 
         ],
@@ -29,5 +31,5 @@ const productionLogger = () => {
         ]
     });
 }
-
+const options = { db: "mongodb://root:root@172.20.0.2:27017/fordo?authSource=admin", collection: "fordo_log_one" }
 module.exports = productionLogger;
